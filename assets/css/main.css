@@ -1,3 +1,23 @@
+* {
+    box-sizing:border-box;
+}
+html,body {
+    height:100%;
+    background:#fff;
+    color:#333;
+}
+#__nuxt {
+    height:100%;
+}
+#sign-template {
+    height:100%;
+    background:#f1f1f1;
+}
+#default-template {
+    height:100%;
+    padding-top:56px;
+    background:#ffff;
+}
 a,a:hover,a:focus {
     text-decoration: none!important;
     color:inherit!important;
@@ -11,8 +31,27 @@ h1,h2,h3,h4,h5,h6 {
 }
 ul,ol,dl {
     list-style:none;
-    margin:0;
-    padding:0;
+    margin:0!important;
+    padding:0!important;
 }
+.my-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px
+}
+@media (max-width: 1080px){
+    .my-container {
+        width: 750px!important;
+    }
+}
+@media (min-width: 992px){
+    .my-container {
+        width: 960px!important;
+    }
+}
+
+
+
 
 

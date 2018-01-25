@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="sign-template">
         <nuxt/>
     </div>
 </template>
