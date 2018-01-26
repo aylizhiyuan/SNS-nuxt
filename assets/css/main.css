@@ -1,3 +1,4 @@
+/***************************公共样式**************************/
 * {
     box-sizing:border-box;
 }
@@ -49,6 +50,24 @@ ul,ol,dl {
     .my-container {
         width: 750px;
     }
+}
+/*********************首页布局***************************/
+.index {
+    padding-top:30px;
+}
+.index .main {
+    padding-right:0;
+}
+.index .aside {
+    padding:0 0 0 4.16667%;
+}
+.index .main .banner img{
+    width:100%;
+}
+.index .aside .board img {
+    margin-bottom:6px;
+    width:100%;
+    border-radius: 4px;
 }
 
 
