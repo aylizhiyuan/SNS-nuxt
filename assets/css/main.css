@@ -31,8 +31,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 ul,ol,dl {
     list-style:none;
-    margin:0!important;
-    padding:0!important;
+    margin:0;
+    padding:0;
 }
 .my-container {
     margin-right: auto;
@@ -40,16 +40,17 @@ ul,ol,dl {
     padding-left: 15px;
     padding-right: 15px
 }
-@media (max-width: 1080px){
-    .my-container {
-        width: 750px!important;
-    }
-}
 @media (min-width: 992px){
     .my-container {
-        width: 960px!important;
+        width: 960px;
     }
 }
+@media (max-width: 1080px){
+    .my-container {
+        width: 750px;
+    }
+}
+
 
 
 
