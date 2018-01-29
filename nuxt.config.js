@@ -1,4 +1,8 @@
 module.exports = {
+  //插件
+  plugins:[
+      {src:'~/plugins/swiper-plugin.js',ssr:false}
+  ],
   /*
   ** Headers of the page
   */
@@ -16,7 +20,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/css/main.css','~/assets/css/font-awesome.css'],
+  css: ['~/assets/css/main.css','~/assets/css/font-awesome.css','swiper/dist/css/swiper.css'],
   /*
   ** Add axios globally
   */

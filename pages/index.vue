@@ -5,10 +5,15 @@
             <div class="row">
                 <div class="col-8 main">
                     <!--banner-->
-                    <div class="banner">
-                        <nuxt-link to="/">
-                            <img src="../assets/img/banner1.jpg">
-                        </nuxt-link>
+                    <div v-swiper:mySwiper="swiperOption" class="banner">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for="banner in banners">
+                                <img :src=banner>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination swiper-pagination-white"></div>
+                        <div class="swiper-button-prev swiper-button-white"></div>
+                        <div class="swiper-button-next swiper-button-white"></div>
                     </div>
                 </div>
                 <div class="col-4 aside">
@@ -37,8 +42,31 @@
 <script>
     import myHeader from '../components/myHeader'
     export default {
+        data () {
+          return {
+              banners: [ '/banner1.jpg', '/banner2.jpg', '/banner3.jpg','/banner4.jpg'],
+              swiperOption:{
+                  autoplay:{
+                   delay:3000,//切换时间
+                   stopOnLastSlide:false,//是否停止在最后一张
+                   disableOnInteraction:false,//禁止轮播
+                  },
+                  pagination:{
+                      el:'.swiper-pagination'
+                  },
+                  navigation:{
+                      nextEl:'.swiper-button-next',
+                      prevEl:'.swiper-button-prev'
+                  }
+                  // some swiper options...
+              }
+          }
+        },
         components:{
             myHeader
+        },
+        mounted() {
+
         }
     }
 </script>
