@@ -347,14 +347,14 @@ ul,ol,dl {
     font-size:16px;
     margin-right:5px;
 }
-.note .post .article .author .info .follow {
+.note .post .article .follow {
     background:#42c02e!important;
     color:#ffff!important;
     font-size:12px;
     border-radius: 20px;
     padding:1px 8px 1px 6px;
 }
-.note .post .article .author .info .following {
+.note .post .article .following {
     background:#fff;
     color:#969696;
     border:1px solid #ccc;
@@ -373,6 +373,65 @@ ul,ol,dl {
 .note .post .article .author .info .btn-sm span {
     margin-left:5px;
 }
+.note .post .article .show-content {
+    font-size:16px;
+    font-weight:400;
+    word-break: break-word;
+    color:#2f2f2f;
+    line-height:1.7
+}
+.note .post .article .show-content p {
+    margin:0 0 20px;
+}
+.note .post .article .show-foot {
+    margin-bottom:30px;
+}
+.note .post .article .show-foot .notebook {
+    font-size:12px;
+    color:#c8c8c8!important;
+}
+.note .post .article .show-foot .notebook i {
+    margin-right:5px;
+}
+.note .post .article .show-foot .copyright {
+    float:right;
+    font-size:12px;
+    color:#c8c8c8;
+}
+.note .post .article .follow-detail {
+    padding:20px;
+    background: #f8f8f8;
+    border:1px solid #e1e1e1;
+    border-radius: 4px;
+}
+.note .post .article .follow-detail .avatar {
+    width:48px;
+    height:48px;
+    float:left;
+    margin-right:10px;
+}
+.note .post .article .follow-detail .btn {
+    float:right;
+    width:100px;
+    padding:8px 0;
+    font-size:16px;
+    box-shadow: none;
+}
+.note .post .article .follow-detail .btn span {
+    margin-left:5px;
+}
+.note .post .article .follow-detail .following {
+    background:none;
+}
+
+
+
+
+
+
+
+
+
 
 
 
