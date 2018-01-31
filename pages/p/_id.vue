@@ -6,7 +6,9 @@
             <div class="post">
                 <!--正文-->
                 <div class="article">
-                    <h1 class="title">月薪三千，就该去死吗？</h1>
+                    <h1 class="title">
+                        月薪三千，就该去死吗？
+                    </h1>
                     <div class="author">
                         <nuxt-link class="avatar" to="/u/123">
                             <img src="../../assets/img/default-avatar.jpg">
@@ -60,6 +62,35 @@
                         </div>
                         <div class="signature">
                             为城市里的不安和孤寂发声。微信公众号：得及
+                        </div>
+                    </div>
+                    <div class="meta-bottom">
+                        <div class="like">
+                            <div class="btn like-group">
+                                <div class="btn-like">
+                                    <a href="javascript:void(0)">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>喜欢</span>
+                                    </a>
+                                </div>
+                                <div class="modal-wrap">
+                                    <a>34</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="share-group">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-weibo weibo"></i>
+                            </a>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-weixin weixin"></i>
+                            </a>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-qq qq"></i>
+                            </a>
+                            <a class="more-share" href="javascript:void(0)">
+                                更多分享
+                            </a>
                         </div>
                     </div>
                 </div>
