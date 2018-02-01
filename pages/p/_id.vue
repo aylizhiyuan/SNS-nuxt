@@ -66,31 +66,53 @@
                     </div>
                     <div class="meta-bottom">
                         <div class="like">
-                            <div class="btn like-group">
+                            <div class="btn like-group" :class="{active:active_like}">
                                 <div class="btn-like">
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" @click="isLike">
                                         <i class="fa fa-heart-o"></i>
                                         <span>喜欢</span>
                                     </a>
                                 </div>
                                 <div class="modal-wrap">
-                                    <a>34</a>
+                                    <a>{{like_number}}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="share-group">
-                            <a href="javascript:void(0)">
+                            <a v-b-tooltip.hover title="分享到微博" href="javascript:void(0)">
                                 <i class="fa fa-weibo weibo"></i>
                             </a>
-                            <a href="javascript:void(0)">
+                            <a v-b-tooltip.hover title="分享到微信" href="javascript:void(0)">
                                 <i class="fa fa-weixin weixin"></i>
                             </a>
-                            <a href="javascript:void(0)">
+                            <a v-b-tooltip.hover title="分享到qq" href="javascript:void(0)">
                                 <i class="fa fa-qq qq"></i>
                             </a>
-                            <a class="more-share" href="javascript:void(0)">
+                            <a class="more-share" href="javascript:void(0)" id="popoverButton-sync" variant="primary">
                                 更多分享
                             </a>
+                            <b-popover :show.sync="showPop" target="popoverButton-sync" placement="top" triggers="focus">
+                                <ul class="share-list">
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <i class="fa fa-twitter twitter"></i>
+                                            <span>分享到Twitter</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <i class="fa  fa-facebook-square facebook"></i>
+                                            <span>分享到Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <i class="fa fa-google-plus google"></i>
+                                            <span>分享到Google</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </b-popover>
                         </div>
                     </div>
                 </div>
@@ -114,7 +136,10 @@
                 iconObj:{
                     'fa-plus-square-o':true,
                     'fa-check':false
-                }
+                },
+                like_number:30,
+                active_like:false,
+                showPop:false
             }
         },
         components:{
@@ -148,6 +173,17 @@
                     this.$refs.followWord2.innerHTML = '已关注';
                     this.$refs.icon2.className = 'fa fa-check';
                 }
+            },
+            isLike:function(){
+                if(this.active_like == true){
+                    //不喜欢了
+                    --this.like_number
+                }else{
+                    //喜欢
+                    ++this.like_number
+                }
+                //将最新的like_number值直接发送给后台
+                this.active_like = !this.active_like;
             }
         }
     }

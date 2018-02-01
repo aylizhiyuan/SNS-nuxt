@@ -461,9 +461,14 @@ ul,ol,dl {
     border:1px solid #ea6f5a;
     padding:13px 0 15px;
     border-radius: 40px;
+    color:#ea6f5a;
 }
 .note .post .article .meta-bottom .like .active {
-    background:#ea6f5a;
+    background:#ea6f5a!important;
+    color:#ffff;
+}
+.note .post .article .meta-bottom .like .active .modal-wrap {
+    border-color:#ffff;
 }
 .note .post .article .meta-bottom .like-group:hover {
     background:rgb(254,247,245);
@@ -471,7 +476,6 @@ ul,ol,dl {
 .note .post .article .meta-bottom .like-group .btn-like {
     font-size:19px;
     display:inline-block;
-    color:#ea6f5a;
 }
 .note .post .article .meta-bottom .like-group .btn-like a {
     padding:18px 15px 18px 30px;
@@ -483,13 +487,12 @@ ul,ol,dl {
     font-size:18px;
     display:inline-block;
     border-left:1px solid #ea6f5a;
-    color:#ea6f5a;
 }
 .note .post .article .meta-bottom .like-group .modal-wrap a {
     padding:18px 30px 18px 17px;
 }
 .note .post .article .meta-bottom .share-group {
-
+    margin-top:6px;
 }
 .note .post .article .meta-bottom .share-group a {
     display:inline-block;
@@ -525,6 +528,42 @@ ul,ol,dl {
     border-radius: 40px;
     color:#969696!important;
 }
+.popover-body {
+    padding:0!important;
+}
+.share-list {
+    margin: 0;
+    list-style: none
+}
+
+.share-list li {
+    line-height: 20px
+}
+
+.share-list a {
+    padding: 5px 10px;
+    display: block
+}
+.share-list a:hover {
+    background-color: #f0f0f0
+}
+.share-list i {
+    margin-right: 10px
+}
+.share-list span {
+    vertical-align: middle
+}
+.twitter {
+    color:#00aaec;
+}
+.facebook {
+    color:#4460a0;
+}
+.google {
+    color:#fb6e61;
+}
+
+
 
 
 
