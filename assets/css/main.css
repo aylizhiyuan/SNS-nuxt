@@ -2,6 +2,13 @@
 * {
     box-sizing:border-box;
 }
+.clearfix:after {
+    content:'';
+    display:block;
+    clear:both;
+    height:0;
+    visibility: hidden;
+}
 html,body {
     height:100%;
     background:#fff;
@@ -562,7 +569,6 @@ ul,ol,dl {
 .google {
     color:#fb6e61;
 }
-
 
 
 

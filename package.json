@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "axios": "^0.16.2",
     "bootstrap": "4.0.0-beta.2",
     "bootstrap-vue": "^1.4.1",

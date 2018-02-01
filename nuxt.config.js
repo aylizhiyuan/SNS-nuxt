@@ -20,7 +20,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/css/main.css','~/assets/css/font-awesome.css','swiper/dist/css/swiper.css'],
+  css: ['~/assets/css/main.css','~/assets/css/font-awesome.css','swiper/dist/css/swiper.css','~/assets/css/animate.css'],
   /*
   ** Add axios globally
   */
