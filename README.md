@@ -1,22 +1,28 @@
-# jianshu
+# 我的简书
 
-> jianshu product
+> 仿简书,使用nuxt+Vue+node完成简书所有功能
 
-## Build Setup
+## 安装和打包
 
 ``` bash
-# install dependencies
+# 安装依赖
 $ npm install # Or yarn install
 
-# serve with hot reload at localhost:3000
+# 启动服务器,使用localhost:3000打开调试
 $ npm run dev
 
-# build for production and launch server
+# 打包、上线部署
 $ npm start
 ```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
-
-## Backpack
-
-We use [backpack](https://github.com/palmerhq/backpack) to watch and build the application, so you can use the latest ES6 features (module syntax, async/await, etc.).
+#完成功能统计
+#### nuxt安装配置 (已完成)
+#### 安装bootstrap-Vue依赖 (已完成)
+#### 完成登录、注册页面  (已完成)
+#### 导航设计 (已完成)
+#### 首页框架搭建 (已完成)
+#### 首页轮播图 (已完成)
+#### 首页列表 (已完成)
+#### 文章页面的关注效果 (已完成)
+#### 关注功能的双向绑定 (已完成)
+#### tip功能和喜欢功能 (已完成)
+#### emoji表情功能 (已完成)
