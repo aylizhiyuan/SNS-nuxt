@@ -6,24 +6,24 @@
                 <nuxt-link class="avatar" to="/u/213">
                     <img src="../assets/img/default-avatar.jpg">
                 </nuxt-link>
-                <textarea @focus="send_one=true" placeholder="写下你的评论"></textarea>
+                <textarea @focus="send=true" placeholder="写下你的评论" v-model="value"></textarea>
                 <transition :duration="200" name="fade">
-                    <div v-if="send_one" class="write-function-block clearfix">
+                    <div v-if="send" class="write-function-block clearfix">
                         <div class="emoji-modal-wrap">
                             <a href="javascript:void(0)" @click="showEmoji=!showEmoji" class="emoji">
                                 <i class="fa fa-smile-o"></i>
                             </a>
                             <transition :duration="200" name="fade">
                                 <div v-if="showEmoji" class="emoji-modal arrow-up">
-
+                                    <vue-emoji @select="selectEmoji"></vue-emoji>
                                 </div>
                             </transition>
                         </div>
                         <div class="hint">
                             Ctrl+Enter 发表
                         </div>
-                        <a class="btn btn-send" href="javascript:void(0)">发送</a>
-                        <a class="cancel" href="javascript:void(0)" @click="send_one=false">取消</a>
+                        <a class="btn btn-send" href="javascript:void(0)" @click="sendData">发送</a>
+                        <a class="cancel" href="javascript:void(0)" @click="send=false">取消</a>
                     </div>
                 </transition>
             </form>
@@ -32,14 +32,27 @@
     </div>
 </template>
 <script>
+    import vueEmoji from '~/components/vueEmoji'
     export default {
         name:'myComment',
         data () {
             return {
-                send_one:false,
-                send_two:false,
-                showEmoji:false
+                send:false,
+                showEmoji:false,
+                value:''
             }
+        },
+        methods:{
+          selectEmoji:function(code){
+              this.showEmoji = false;
+              this.value += code;
+          },
+          sendData:function(){
+              console.log('发送value值的数据给后端');
+          }
+        },
+        components:{
+            vueEmoji
         }
     }
 </script>
@@ -135,8 +148,9 @@
         position:absolute;
         top:50px;
         left:-48px;
-        width:360px;
-        height:100px;
+        width:402px;
+        height:208px;
+        padding:10px;
         border:1px solid #d9d9d9;
         border-radius:4px;
         box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
