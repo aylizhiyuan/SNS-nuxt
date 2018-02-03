@@ -351,6 +351,16 @@ ul,ol,dl {
     padding-top:20px;
     padding-bottom:40px;
 }
+@media (max-width:785px) {
+    .note .post {
+        margin:0 74px;
+    }
+}
+@media (max-width:750px) {
+    body {
+        overflow-x:hidden
+    }
+}
 .note .post .article .title {
     font-size:34px;
     font-weight:700;

@@ -78,14 +78,55 @@
                                 <div class="meta">
                                     <span>
                                         {{comment.floor}}楼·
-                                        {{comment.create_at}}
+                                        {{comment.create_at |formatDate}}
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="comment-wrap"></div>
+                        <div class="comment-wrap">
+                            <p>
+                                {{comment.compiled_content}}
+                            </p>
+                            <div class="tool-group">
+                                <a href="javascript:void(0)">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <span>
+                                        {{comment.likes_count}}人点赞
+                                    </span>
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i class="fa fa-comment-o"></i>
+                                    <span>回复</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="sub-comment-list"></div>
+                    <div v-if="comment.children.length != 0" class="sub-comment-list">
+                        <div v-for="(subComment,index) in comment.children" :id="'comment-' + subComment.id" class="sub-comment">
+                            <p>
+                                <nuxt-link to="/u/123">
+                                    {{subComment.user.nick_name}}
+                                </nuxt-link>
+                                :
+                                <span v-html="subComment.compiled_content"></span>
+                            </p>
+                            <div class="sub-tool-group">
+                                <span>{{subComment.create_at|formatDate}}</span>
+                                <a href="javascript:void(0)">
+                                    <i class="fa fa-comment-o"></i>
+                                    <span>回复</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="more-comment">
+                            <a class="add-comment-btn" href="javascript:void(0)">
+                                <i class="fa fa-pencil"></i>
+                                <span>添加新评论</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!--显示表单-->
+
                 </div>
             </div>
         </div>
@@ -177,7 +218,7 @@
                                 user_id:5954136,
                                 user:{
                                     id:5954136,
-                                    nickname:'与笑颜开'
+                                    nick_name:'与笑颜开'
                                 },
                                 create_at:'2018-01-25T16:55:40.000+08:00',
                                 compiled_content:'混凝土方块移动工程师是啥子工作，我咋没听过？我也做过混凝土这行'
@@ -188,7 +229,7 @@
                                 user_id:8914781,
                                 user:{
                                     id:8914781,
-                                    nickname:'向天再借5厘米'
+                                    nick_name:'向天再借5厘米'
                                 },
                                 create_at:'2018-01-28T21:06:14.000+08:00',
                                 compiled_content:'<a href="/users/88ad9c9678a6" class="maleskine-author" target="_blank" data-user-slug="88ad9c9678a6">@与笑颜开</a> 搬砖'
@@ -199,7 +240,7 @@
                                 user_id:9964877,
                                 user:{
                                     id:9964877,
-                                    nickname:'保坤文化传媒'
+                                    nick_name:'保坤文化传媒'
                                 },
                                 create_at:'2018-01-25T16:55:40.000+08:00',
                                 compiled_content:'好有意思。'
@@ -386,6 +427,9 @@
         padding:20px 0 30px 0;
         border-bottom:1px solid #f0f0f0;
     }
+    .note .post .comment-list .comment .author {
+        margin-bottom:15px;
+    }
     .note .post .comment-list .info {
         display:inline-block;
         vertical-align: middle;
@@ -397,6 +441,72 @@
         font-size:12px;
         color:#969696;
     }
+    .note .post .comment-list .comment p {
+        font-size:16px;
+        margin:10px 0;
+        line-height:1.5;
+        word-break: break-word!important;
+    }
+    .note .post .comment-list .comment .tool-group a {
+        color:#969696!important;
+        margin-right:10px;
+    }
+    .note .post .comment-list .comment .tool-group a i {
+        font-size:18px;
+        margin-right:5px;
+    }
+    .note .post .comment-list .comment .tool-group a span {
+        font-size:14px;
+    }
+    .note .post .comment-list .sub-comment-list {
+        border-left:2px solid #d9d9d9;
+        margin-top:20px;
+        padding:5px 0 5px 20px;
+    }
+    .note .post .comment-list .sub-comment {
+        padding-bottom:15px;
+        margin-bottom:15px;
+        border-bottom:1px dashed #f0f0f0;
+    }
+    .note .post .comment-list .sub-comment p {
+        font-size:14px;
+        line-height:1.5;
+        margin-bottom:5px;
+    }
+    .note .post .comment-list .sub-comment p a {
+        color:#3194d0!important;
+    }
+    .note .post .comment-list .sub-tool-group {
+        font-size:12px;
+        color:#969696;
+    }
+    .note .post .comment-list .sub-tool-group a {
+        margin-left:10px;
+    }
+    .note .post .comment-list .sub-tool-group a i {
+        margin-right:5px;
+    }
+    .note .post .comment-list .more-comment {
+        font-size:14px;
+        color:#969696;
+    }
+    .note .post .comment-list .more-comment a:hover {
+        color:#333!important;
+    }
+    .note .post .comment-list .more-comment i {
+        margin-right:5px;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
