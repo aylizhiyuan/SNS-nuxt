@@ -6,9 +6,9 @@
                 <nuxt-link class="avatar" to="/u/213">
                     <img src="../assets/img/default-avatar.jpg">
                 </nuxt-link>
-                <textarea @focus="send=true" placeholder="写下你的评论" v-model="value"></textarea>
+                <textarea @focus="sendCommentBtn=true" placeholder="写下你的评论" v-model="commentData"></textarea>
                 <transition :duration="200" name="fade">
-                    <div v-if="send" class="write-function-block clearfix">
+                    <div v-if="sendCommentBtn" class="write-function-block clearfix">
                         <div class="emoji-modal-wrap">
                             <a href="javascript:void(0)" @click="showEmoji=!showEmoji" class="emoji">
                                 <i class="fa fa-smile-o"></i>
@@ -22,8 +22,8 @@
                         <div class="hint">
                             Ctrl+Enter 发表
                         </div>
-                        <a class="btn btn-send" href="javascript:void(0)" @click="sendData">发送</a>
-                        <a class="cancel" href="javascript:void(0)" @click="send=false">取消</a>
+                        <a class="btn btn-send" href="javascript:void(0)" @click="sendComment">发送</a>
+                        <a class="cancel" href="javascript:void(0)" @click="sendCommentBtn=false">取消</a>
                     </div>
                 </transition>
             </form>
@@ -118,15 +118,36 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="more-comment">
-                            <a class="add-comment-btn" href="javascript:void(0)">
+                        <div class="sub-comment more-comment">
+                            <a class="add-comment-btn" @click="showSubCommentForm(index)" href="javascript:void(0)">
                                 <i class="fa fa-pencil"></i>
                                 <span>添加新评论</span>
                             </a>
                         </div>
+                        <!--要显示的表单-->
+                        <transition :duration="200" name="fade">
+                            <form v-if="activeIndex.includes(index)" class="new-comment">
+                            <textarea placeholder="写下你的评论"></textarea>
+                                <div class="write-function-block clearfix">
+                                    <div class="emoji-modal-wrap">
+                                        <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
+                                            <i class="fa fa-smile-o"></i>
+                                        </a>
+                                        <transition :duration="200" name="fade">
+                                            <div v-if="emojiIndex.includes(index)" class="emoji-modal arrow-up">
+                                                <vue-emoji :index="index" @select="selectSubEmoji"></vue-emoji>
+                                            </div>
+                                        </transition>
+                                    </div>
+                                    <div class="hint">
+                                        Ctrl+Enter 发表
+                                    </div>
+                                    <a class="btn btn-send" href="javascript:void(0)" @click="sendSubCommentData(index)">发送</a>
+                                    <a class="cancel" href="javascript:void(0)" @click="closeSubComment(index)">取消</a>
+                                </div>
+                            </form>
+                        </transition>
                     </div>
-                    <!--显示表单-->
-
                 </div>
             </div>
         </div>
@@ -138,9 +159,9 @@
         name:'myComment',
         data () {
             return {
-                send:false,
+                sendCommentBtn:false,
                 showEmoji:false,
-                value:'',
+                commentData:'',
                 comments:[
                     {
                         id:19935725,
@@ -266,21 +287,63 @@
                             },
                         user_id:3160769
                     }
-                ]
+                ],
+                activeIndex:[],
+                emojiIndex:[],
             }
         },
         methods:{
-          selectEmoji:function(code){
-              this.showEmoji = false;
-              this.value += code;
-          },
-          sendData:function(){
-              console.log('发送value值的数据给后端');
-          }
+            selectEmoji:function(code){
+                this.showEmoji = false;
+                this.commentData += code;
+            },
+            sendComment:function(){
+                console.log('发送');
+            },
+            showSubCommentForm:function(value){
+                if(this.activeIndex.includes(value)){
+                    let index = this.activeIndex.indexOf(value);
+                    this.activeIndex.splice(index,1);
+                }else{
+                    this.activeIndex.push(value);
+                }
+            },
+            sendSubCommentData:function(value){
+                let index = this.activeIndex.indexOf(value);
+                this.activeIndex.splice(index,1);
+            },
+            closeSubComment:function(value){
+                let index = this.activeIndex.indexOf(value);
+                this.activeIndex.splice(index,1);
+            },
+            showSubEmoji:function(value){
+                if(this.emojiIndex.includes(value)){
+                    let index = this.emojiIndex.indexOf(value);
+                    this.emojiIndex.splice(index,1)
+                }else{
+                    this.emojiIndex.push(value);
+                }
+            },
+            selectSubEmoji:function(code){
+                console.log(this);
+
+            }
         },
         components:{
             vueEmoji
-        }
+        },
+        directives: {
+            // 除了默认设置的核心指令( v-model 和 v-show ),Vue 也允许注册自定义指令。
+            // 对纯 DOM 元素进行底层操作
+            // 注册局部指令，在模板中任何元素上使用新的 v-focus 属性
+            "focus": {
+                // 钩子函数：bind inserted update componentUpdated unbind
+                // 钩子函数的参数：el，binding，vnode，oldVnode
+                bind:function(el,binding,vnode,oldVnode){
+                    console.log(el);
+                },
+            }
+        },
     }
 </script>
 <style>
@@ -361,7 +424,7 @@
         width:78px;
         padding:8px 18px;
         margin:10px 0;
-        font-size:18px;
+        font-size:16px;
         background:#42c02e;
         border-radius: 20px;
         color:#fff!important;
@@ -468,6 +531,11 @@
         margin-bottom:15px;
         border-bottom:1px dashed #f0f0f0;
     }
+    .note .post .comment-list .sub-comment-list .sub-comment:last-child {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
     .note .post .comment-list .sub-comment p {
         font-size:14px;
         line-height:1.5;
@@ -489,6 +557,9 @@
     .note .post .comment-list .more-comment {
         font-size:14px;
         color:#969696;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border:none;
     }
     .note .post .comment-list .more-comment a:hover {
         color:#333!important;
@@ -496,19 +567,7 @@
     .note .post .comment-list .more-comment i {
         margin-right:5px;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .note .post .comment-list .sub-comment-list .new-comment {
+        margin: 0;
+    }
 </style>
