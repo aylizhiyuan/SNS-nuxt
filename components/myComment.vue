@@ -127,7 +127,7 @@
                         <!--要显示的表单-->
                         <transition :duration="200" name="fade">
                             <form v-if="activeIndex.includes(index)" class="new-comment">
-                            <textarea placeholder="写下你的评论"></textarea>
+                            <textarea v-focus placeholder="写下你的评论"></textarea>
                                 <div class="write-function-block clearfix">
                                     <div class="emoji-modal-wrap">
                                         <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
@@ -135,15 +135,19 @@
                                         </a>
                                         <transition :duration="200" name="fade">
                                             <div v-if="emojiIndex.includes(index)" class="emoji-modal arrow-up">
-                                                <vue-emoji :index="index" @select="selectSubEmoji"></vue-emoji>
+                                                <vue-emoji ref="emoji" @select="selectSubEmoji"></vue-emoji>
                                             </div>
                                         </transition>
                                     </div>
                                     <div class="hint">
                                         Ctrl+Enter 发表
                                     </div>
-                                    <a class="btn btn-send" href="javascript:void(0)" @click="sendSubCommentData(index)">发送</a>
-                                    <a class="cancel" href="javascript:void(0)" @click="closeSubComment(index)">取消</a>
+                                    <a class="btn btn-send" href="javascript:void(0)" @click="sendSubCommentData(index)">
+                                        发送
+                                    </a>
+                                    <a class="cancel" href="javascript:void(0)" @click="closeSubComment(index)">
+                                        取消
+                                    </a>
                                 </div>
                             </form>
                         </transition>
@@ -318,15 +322,14 @@
             },
             showSubEmoji:function(value){
                 if(this.emojiIndex.includes(value)){
-                    let index = this.emojiIndex.indexOf(value);
-                    this.emojiIndex.splice(index,1)
+                    this.emojiIndex = [];
                 }else{
+                    this.emojiIndex = [];
                     this.emojiIndex.push(value);
                 }
             },
             selectSubEmoji:function(code){
-                console.log(this);
-
+                console.log(this.$refs.emoji);
             }
         },
         components:{
@@ -340,8 +343,12 @@
                 // 钩子函数：bind inserted update componentUpdated unbind
                 // 钩子函数的参数：el，binding，vnode，oldVnode
                 bind:function(el,binding,vnode,oldVnode){
-                    console.log(el);
+                    el.focus();
                 },
+                inserted: function (el) {
+                    // 聚焦元素
+                    el.focus()
+                }
             }
         },
     }
