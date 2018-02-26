@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="279fc2e5-9cd5-4448-b833-aaa6bbd94964" name="Default" comment="完成emoji功能">
+    <list default="true" id="279fc2e5-9cd5-4448-b833-aaa6bbd94964" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -304,7 +304,7 @@
       <workItem from="1517619928035" duration="10205000" />
       <workItem from="1517793277464" duration="23463000" />
       <workItem from="1519560758112" duration="3918000" />
-      <workItem from="1519607969942" duration="7682000" />
+      <workItem from="1519607969942" duration="7687000" />
     </task>
     <task id="LOCAL-00001" summary="导航设计中....">
       <created>1516874572150</created>
@@ -432,11 +432,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519615178847</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="完成emoji功能">
+      <created>1519616419601</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1519616419602</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206227000" />
+    <option name="totallyTimeSpent" value="206232000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
