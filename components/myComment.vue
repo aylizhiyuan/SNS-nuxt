@@ -65,7 +65,7 @@
                         <div class="zan"></div>
                     </div>
                 </div>
-                <div :id="'comment-'+comment.id" v-for="(comment,index) in comments" class="comment">
+                <div :id="'comment-'+comment.id" :keys="index" v-for="(comment,index) in comments" class="comment">
                     <div class="comment-content">
                         <div class="author">
                             <nuxt-link class="avatar" to="/u/123">
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div v-if="comment.children.length != 0" class="sub-comment-list">
-                        <div v-for="(subComment,index) in comment.children" :id="'comment-' + subComment.id" class="sub-comment">
+                        <div v-for="(subComment,index) in comment.children" :id="'comment-' + subComment.id" class="sub-comment" :keys="index">
                             <p>
                                 <nuxt-link to="/u/123">
                                     {{subComment.user.nick_name}}
@@ -127,7 +127,7 @@
                         <!--要显示的表单-->
                         <transition :duration="200" name="fade">
                             <form v-if="activeIndex.includes(index)" class="new-comment">
-                            <textarea v-focus placeholder="写下你的评论"></textarea>
+                            <textarea v-focus placeholder="写下你的评论" v-model="subCommentList[index]"></textarea>
                                 <div class="write-function-block clearfix">
                                     <div class="emoji-modal-wrap">
                                         <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
@@ -294,6 +294,7 @@
                 ],
                 activeIndex:[],
                 emojiIndex:[],
+                subCommentList:[]
             }
         },
         methods:{
@@ -309,6 +310,10 @@
                     let index = this.activeIndex.indexOf(value);
                     this.activeIndex.splice(index,1);
                 }else{
+                    //清除掉表单内的内容
+                    this.subCommentList[value] = '';
+                    //将这个表情关掉
+                    this.emojiIndex = [];
                     this.activeIndex.push(value);
                 }
             },
@@ -329,7 +334,15 @@
                 }
             },
             selectSubEmoji:function(code){
-                console.log(this.$refs.emoji);
+                //当前下标
+                let index = this.emojiIndex[0];
+                //将表情所代表的code值放入表单当中.
+                if(this.subCommentList[index] == null){
+                    this.subCommentList[index] = '';
+                }
+                this.subCommentList[index] += code;
+                //关掉emoji弹出框
+                this.emojiIndex = [];
             }
         },
         components:{
@@ -351,6 +364,11 @@
                 }
             }
         },
+        watch:{
+            subCommentList:function(val){
+                console.log(val);
+            }
+        }
     }
 </script>
 <style>
