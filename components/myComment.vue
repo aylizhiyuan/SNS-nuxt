@@ -127,7 +127,7 @@
                         <!--要显示的表单-->
                         <transition :duration="200" name="fade">
                             <form v-if="activeIndex.includes(index)" class="new-comment">
-                            <textarea v-focus placeholder="写下你的评论" ref="content" v-model="subCommentList[index]"></textarea>
+                            <textarea v-focus placeholder="写下你的评论"  ref="content" v-model="subCommentList[index]"></textarea>
                                 <div class="write-function-block clearfix">
                                     <div class="emoji-modal-wrap">
                                         <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
@@ -344,7 +344,8 @@
                 //关掉emoji弹出框
                 this.emojiIndex = [];
                 //聚焦一下
-                this.$refs.content[index].focus();
+                let num = this.activeIndex.indexOf(index)
+                this.$refs.content[num].focus()
             }
         },
         components:{
