@@ -127,7 +127,7 @@
                         <!--要显示的表单-->
                         <transition :duration="200" name="fade">
                             <form v-if="activeIndex.includes(index)" class="new-comment">
-                            <textarea v-focus placeholder="写下你的评论" v-model="subCommentList[index]"></textarea>
+                            <textarea v-focus placeholder="写下你的评论" ref="content" v-model="subCommentList[index]"></textarea>
                                 <div class="write-function-block clearfix">
                                     <div class="emoji-modal-wrap">
                                         <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
@@ -343,10 +343,12 @@
                 this.subCommentList[index] += code;
                 //关掉emoji弹出框
                 this.emojiIndex = [];
+                //聚焦一下
+                this.$refs.content[index].focus();
             }
         },
         components:{
-            vueEmoji
+            vueEmoji,
         },
         directives: {
             // 除了默认设置的核心指令( v-model 和 v-show ),Vue 也允许注册自定义指令。
