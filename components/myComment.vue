@@ -112,7 +112,7 @@
                             </p>
                             <div class="sub-tool-group">
                                 <span>{{subComment.create_at|formatDate}}</span>
-                                <a href="javascript:void(0)" @click="">
+                                <a href="javascript:void(0)" @click="showSubCommentFormAtName(index,subComment.id,subComment.user.nick_name)">
                                     <i class="fa fa-comment-o"></i>
                                     <span>回复</span>
                                 </a>
@@ -158,6 +158,7 @@
     </div>
 </template>
 <script>
+    import Vue from 'vue'
     import vueEmoji from '~/components/vueEmoji'
     export default {
         name:'myComment',
@@ -296,6 +297,7 @@
                 emojiIndex:[],
                 subCommentList:[],
                 commentFormState:[],
+                commentId:null
             }
         },
         methods:{
@@ -309,6 +311,7 @@
             showSubCommentForm:function(index,position){
                 if(!this.activeIndex.includes(index)){
                     //第一次点击，总是显示
+                    this.subCommentList[index] = '';
                     this.activeIndex.push(index);
                     //记录当前点击的下标以及位置
                     this.commentFormState[index] = position;
@@ -316,11 +319,34 @@
                     if(this.commentFormState[index] !== position){
                         //点的是另外一个
                         this.commentFormState[index] = position;
+                        //聚焦一下
+                        let num = this.activeIndex.indexOf(index);
+                        this.$refs.content[num].focus();
                     }else{
                         //点的是同一个,将它隐藏掉.
                         this.activeIndex.splice(this.activeIndex.indexOf(index),1)
                         this.commentFormState[index] = '';
                     }
+                }
+            },
+            showSubCommentFormAtName:function(index,id,name){
+                if(this.activeIndex.includes(index)){
+                    if(this.commentId == id){
+                        //隐藏掉
+                        this.activeIndex.splice(this.activeIndex.indexOf(index),1)
+                        this.commentId = null;
+                        Vue.set(this.subCommentList, index,'');
+                    }
+                    //聚焦一下
+                    let num = this.activeIndex.indexOf(index);
+                    this.$refs.content[num].focus();
+                    //表单已经显示了
+                    Vue.set(this.subCommentList, index,'@' + name + ' ');
+                    this.commentId = id;//记录一下上一次点过的ID值
+                }else{
+                    //表单没有显示出来
+                    Vue.set(this.subCommentList, index,'@' + name + ' ');
+                    this.activeIndex.push(index);
                 }
             },
             sendSubCommentData:function(value){
