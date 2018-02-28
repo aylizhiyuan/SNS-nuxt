@@ -94,7 +94,7 @@
                                         {{comment.likes_count}}人点赞
                                     </span>
                                 </a>
-                                <a href="javascript:void(0)" @click="showSubCommentForm(index,'top')">
+                                <a href="javascript:void(0)" @click="showSubCommentForm(index,'top','')">
                                     <i class="fa fa-comment-o"></i>
                                     <span>回复</span>
                                 </a>
@@ -112,14 +112,14 @@
                             </p>
                             <div class="sub-tool-group">
                                 <span>{{subComment.create_at|formatDate}}</span>
-                                <a href="javascript:void(0)" @click="showSubCommentFormAtName(index,subComment.id,subComment.user.nick_name)">
+                                <a href="javascript:void(0)" @click="showSubCommentForm(index,subComment.id,subComment.user.nick_name)">
                                     <i class="fa fa-comment-o"></i>
                                     <span>回复</span>
                                 </a>
                             </div>
                         </div>
                         <div v-show="comment.children.length != 0" class="sub-comment more-comment">
-                            <a class="add-comment-btn" @click="showSubCommentForm(index,'bottom')" href="javascript:void(0)">
+                            <a class="add-comment-btn" @click="showSubCommentForm(index,'bottom','')" href="javascript:void(0)">
                                 <i class="fa fa-pencil"></i>
                                 <span>添加新评论</span>
                             </a>
@@ -297,7 +297,7 @@
                 emojiIndex:[],
                 subCommentList:[],
                 commentFormState:[],
-                commentId:null
+                commentId:[]
             }
         },
         methods:{
@@ -308,46 +308,28 @@
             sendComment:function(){
                 console.log('发送');
             },
-            showSubCommentForm:function(index,position){
-                if(!this.activeIndex.includes(index)){
-                    //第一次点击，总是显示
-                    this.subCommentList[index] = '';
-                    this.activeIndex.push(index);
-                    //记录当前点击的下标以及位置
-                    this.commentFormState[index] = position;
-                }else if(this.activeIndex.includes(index)){
-                    if(this.commentFormState[index] !== position){
-                        //点的是另外一个
-                        this.commentFormState[index] = position;
-                        //聚焦一下
-                        let num = this.activeIndex.indexOf(index);
-                        this.$refs.content[num].focus();
-                    }else{
-                        //点的是同一个,将它隐藏掉.
-                        this.activeIndex.splice(this.activeIndex.indexOf(index),1)
-                        this.commentFormState[index] = '';
-                    }
-                }
-            },
-            showSubCommentFormAtName:function(index,id,name){
-                if(this.activeIndex.includes(index)){
-                    if(this.commentId == id){
-                        //隐藏掉
-                        this.activeIndex.splice(this.activeIndex.indexOf(index),1)
-                        this.commentId = null;
-                        Vue.set(this.subCommentList, index,'');
-                    }
-                    //聚焦一下
-                    let num = this.activeIndex.indexOf(index);
-                    this.$refs.content[num].focus();
-                    //表单已经显示了
-                    Vue.set(this.subCommentList, index,'@' + name + ' ');
-                    this.commentId = id;//记录一下上一次点过的ID值
-                }else{
-                    //表单没有显示出来
-                    Vue.set(this.subCommentList, index,'@' + name + ' ');
-                    this.activeIndex.push(index);
-                }
+            showSubCommentForm:function(index,id,name){
+               let ID = id.toString();
+               if(this.commentId[index] == ID){
+                   //点两次
+                   this.activeIndex.splice(this.activeIndex.indexOf(index),1);
+                   this.commentId[index] = '';
+               }else{
+                   //点一次
+                   //清除表单内容
+                   this.subCommentList[index] = '';
+                   //表情关掉
+                   this.emojiIndex = [];
+                   if(!this.activeIndex.includes(index)){
+                       this.activeIndex.push(index);
+                   }
+                   // 判断用户名是否存在，如果存在添加
+                   if(name != ''){
+                       this.subCommentList[index] = `@${name} `;
+                   }
+                   //存一下上一个回复列表对应点击的按钮
+                   this.commentId[index] = ID;
+               }
             },
             sendSubCommentData:function(value){
                 let index = this.activeIndex.indexOf(value);
