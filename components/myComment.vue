@@ -127,7 +127,7 @@
                         <!--要显示的表单-->
                         <transition :duration="200" name="fade">
                             <form v-if="activeIndex.includes(index)" class="new-comment">
-                            <textarea v-focus placeholder="写下你的评论"  ref="content" v-model="subCommentList[index]"></textarea>
+                            <textarea v-focus="commentFormState[index]" @blur="commentFormState[index]=false" placeholder="写下你的评论" v-model="subCommentList[index]"></textarea>
                                 <div class="write-function-block clearfix">
                                     <div class="emoji-modal-wrap">
                                         <a href="javascript:void(0)" class="emoji" @click="showSubEmoji(index)">
@@ -297,7 +297,8 @@
                 emojiIndex:[],
                 subCommentList:[],
                 commentFormState:[],
-                commentId:[]
+                commentId:[],
+
             }
         },
         methods:{
@@ -329,6 +330,8 @@
                    }
                    //存一下上一个回复列表对应点击的按钮
                    this.commentId[index] = ID;
+                   //获取焦点
+                   this.commentFormState[index] = true;
                }
             },
             sendSubCommentData:function(value){
@@ -360,8 +363,7 @@
                 //关掉emoji弹出框
                 this.emojiIndex = [];
                 //聚焦一下
-                let num = this.activeIndex.indexOf(index);
-                this.$refs.content[num].focus();
+                this.commentFormState[index] = true;
             }
         },
         components:{
@@ -374,12 +376,21 @@
             "focus": {
                 // 钩子函数：bind inserted update componentUpdated unbind
                 // 钩子函数的参数：el，binding，vnode，oldVnode
-                bind:function(el,binding,vnode,oldVnode){
-                    el.focus();
+                bind:function(el,{value}){
+                    if(value){
+                        el.focus();
+                    }
                 },
-                inserted: function (el) {
-                    // 聚焦元素
-                    el.focus()
+                inserted: function (el,{value}) {
+                    if(value){
+                        // 聚焦元素
+                        el.focus()
+                    }
+                },
+                update:function(el,{value}){
+                    if(value){
+                        el.focus();
+                    }
                 }
             }
         },
