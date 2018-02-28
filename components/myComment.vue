@@ -6,7 +6,7 @@
                 <nuxt-link class="avatar" to="/u/213">
                     <img src="../assets/img/default-avatar.jpg">
                 </nuxt-link>
-                <textarea @focus="sendCommentBtn=true" placeholder="写下你的评论" v-model="commentData"></textarea>
+                <textarea v-focus="emojiFocus" @focus="sendCommentBtn=true" placeholder="写下你的评论" v-model="commentData"></textarea>
                 <transition :duration="200" name="fade">
                     <div v-if="sendCommentBtn" class="write-function-block clearfix">
                         <div class="emoji-modal-wrap">
@@ -23,7 +23,7 @@
                             Ctrl+Enter 发表
                         </div>
                         <a class="btn btn-send" href="javascript:void(0)" @click="sendComment">发送</a>
-                        <a class="cancel" href="javascript:void(0)" @click="sendCommentBtn=false">取消</a>
+                        <a class="cancel" href="javascript:void(0)" @click="closeComment">取消</a>
                     </div>
                 </transition>
             </form>
@@ -88,9 +88,9 @@
                                 {{comment.compiled_content}}
                             </p>
                             <div class="tool-group">
-                                <a href="javascript:void(0)">
-                                    <i class="fa fa-thumbs-o-up"></i>
-                                    <span>
+                                <a @click="commentLike(index)" href="javascript:void(0)" class="like-bottom zan-animation">
+                                    <i class="fa" :class="comment.liked?'fa-thumbs-up liked':'fa-thumbs-o-up'"></i>
+                                    <span :class="comment.liked?'real-liked':''">
                                         {{comment.likes_count}}人点赞
                                     </span>
                                 </a>
@@ -298,16 +298,25 @@
                 subCommentList:[],
                 commentFormState:[],
                 commentId:[],
-
+                emojiFocus:false
             }
         },
         methods:{
             selectEmoji:function(code){
                 this.showEmoji = false;
                 this.commentData += code;
+                this.emojiFocus = true;
             },
             sendComment:function(){
+                this.commentData = '';
+                this.sendCommentBtn = false;
+                this.emojiFocus = false;
                 console.log('发送');
+            },
+            closeComment:function(){
+                this.commentData = '';
+                this.sendCommentBtn = false;
+                this.emojiFocus = false;
             },
             showSubCommentForm:function(index,id,name){
                let ID = id.toString();
@@ -335,14 +344,14 @@
                }
             },
             sendSubCommentData:function(value){
-                let index = this.activeIndex.indexOf(value);
-                this.activeIndex.splice(index,1);
+                this.activeIndex.splice(this.activeIndex.indexOf(value),1);
+                this.commentId[value] = '';
                 //value是下标
                 console.log(this.subCommentList[value]);
             },
             closeSubComment:function(value){
-                let index = this.activeIndex.indexOf(value);
-                this.activeIndex.splice(index,1);
+                this.activeIndex.splice(this.activeIndex.indexOf(value),1);
+                this.commentId[value] = '';
             },
             showSubEmoji:function(value){
                 if(this.emojiIndex.includes(value)){
@@ -364,6 +373,19 @@
                 this.emojiIndex = [];
                 //聚焦一下
                 this.commentFormState[index] = true;
+            },
+            commentLike:function(index){
+                if(this.comments[index].liked){
+                    //点赞过的再点就是取消点赞
+                    this.comments[index].liked = false;
+                    this.comments[index].likes_count -= 1;
+                    //留下取消点赞的axios请求
+                }else{
+                    //没有点赞的再点就是确认点赞
+                    this.comments[index].liked = true;
+                    this.comments[index].likes_count += 1;
+                    //留下添加点赞的axios请求.
+                }
             }
         },
         components:{
@@ -569,6 +591,18 @@
     .note .post .comment-list .comment .tool-group a {
         color:#969696!important;
         margin-right:10px;
+    }
+    .note .post .comment-list .comment .tool-group a:first-child:hover i{
+        color:#ea6f5a;
+    }
+    .note .post .comment-list .comment .tool-group i.liked {
+        color:#ea6f5a;
+    }
+    .note .post .comment-list .comment .tool-group a:first-child:hover span {
+        color:#333;
+    }
+    .note .post .comment-list .comment .tool-group span.real-liked {
+        color:#333;
     }
     .note .post .comment-list .comment .tool-group a i {
         font-size:18px;
