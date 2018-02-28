@@ -12,10 +12,10 @@
                     写文章
                 </nuxt-link>
                 <!--登录和注册按钮-->
-                <nuxt-link to="/sign-up" class="btn sign-up">注册</nuxt-link>
-                <nuxt-link to="/sign-in" class="btn sign-in">登录</nuxt-link>
+                <!--<nuxt-link to="/sign-up" class="btn sign-up">注册</nuxt-link>
+                <nuxt-link to="/sign-in" class="btn sign-in">登录</nuxt-link>-->
                 <!--如果用户登录,那么显示用户头像-->
-                <div style="display:none;" class="user" @mouseover="userShow=true" @mouseleave="userShow=false">
+                <div class="user" @mouseover="userShow=true" @mouseleave="userShow=false">
                     <div class="drop-down">
                         <nuxt-link class="avatar" to="/users">
                             <img src="../assets/img/default-avatar.jpg">
@@ -24,7 +24,7 @@
                     <div class="drop-menu" v-show="userShow">
                         <ul>
                             <li>
-                                <nuxt-link to="/">
+                                <nuxt-link to="/u/123">
                                     <i class="fa fa-home"></i>
                                     我的主页
                                 </nuxt-link>
@@ -239,6 +239,8 @@
         min-width:160px;
         box-shadow: 0 0 8px rgba(0,0,0,.1);
         font-size:15px;
+        z-index:999;
+        background:#fff;
     }
     nav .user .drop-menu ul {
         padding:10px 0;
