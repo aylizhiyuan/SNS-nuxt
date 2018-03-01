@@ -194,6 +194,7 @@ ul,ol,dl {
     padding-left:5px;
 }
 .note-list .title {
+    display:block;
     font-size:18px;
     font-weight: 700;
     margin-bottom:7px;
@@ -1132,6 +1133,64 @@ person .aside .list li a i {
         padding: 0 0 10px!important
     }
 }
+/*********************关注的专题以及文集********************/
+.person .main .user-list {
+    list-style: none;
+    clear: both;
+}
+.person .main .user-list li:first-child {
+    padding-top: 0!important;
+}
+.person .main .user-list li {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: normal;
+}
+.person .main .user-list .avatar, .person .main .user-list .avatar-collection {
+    width: 52px;
+    height: 52px;
+    margin-right: 8px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.person .main .user-list .info {
+    vertical-align: middle;
+    display: inline-block;
+    max-width: 450px;
+}
+.person .main .user-list .info a, .person .main .user-list .name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+}
+.person .main .user-list .meta {
+    padding-top: 2px;
+    font-size: 12px;
+    color: #969696;
+}
+.person .main .user-list .follow, .person .main .user-list .follow-cancel, .person .main .user-list .follow-each, .person .main .user-list .following, .person .main .user-list .user-follow-button-item {
+    float: right;
+    margin-top: 8px;
+    padding: 8px 0;
+    width: 100px;
+    font-size: 15px;
+    background-color: #42c02e;
+}
+.person .main .user-list .btn-success {
+    color:#fff!important;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 40px;
+}
+.person .main .user-list .btn-success:hover {
+    background: rgb(61,185,34)!important;
+}
+.person .main .user-list .btn-success span {
+    margin-left:2px;
+}
+
+
 
 
 
