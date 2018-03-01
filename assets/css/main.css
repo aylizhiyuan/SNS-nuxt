@@ -1190,6 +1190,169 @@ person .aside .list li a i {
     margin-left:2px;
 }
 
+/***********************专题页面**********************/
+.collection .row {
+    padding-top:30px;
+}
+.collection .main .main-top {
+    margin-bottom: 35px;
+}
+.collection .main .main-top .avatar-collection {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+.avatar-collection img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10%;
+}
+.collection .main .main-top .follow, .collection .main .main-top .follow-cancel, .collection .main .main-top .follow-each, .collection .main .main-top .following {
+    padding: 8px 0;
+    width: 100px;
+}
+.collection .main .main-top .btn {
+    float: right;
+    margin: 23px 0 23px 16px;
+    font-size: 15px;
+}
+.collection .main .main-top .btn-hollow {
+    padding: 8px 0;
+    width: 90px;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 40px;
+    background: none;
+    border: 1px solid rgba(59,194,29,.7);
+}
+.collection .main .main-top .btn-hollow:hover {
+    background: rgb(245,252,243);
+}
+.collection .main .main-top .btn {
+    float: right;
+    margin: 23px 0 23px 16px;
+    font-size: 15px;
+}
+.collection .main .main-top .btn-success {
+    color:#fff!important;
+    background:#42c02e;
+    border-radius: 40px;
+}
+.collection .main .main-top .btn-success:hover {
+    background: rgb(61,185,34)!important;
+}
+.collection .main .main-top .title {
+    padding: 10px 0 0 100px;
+}
+.collection .main .main-top .title .name {
+    display: inline;
+    font-size: 21px;
+    font-weight: 700;
+    vertical-align: middle;
+}
+.collection .main .main-top .info {
+    margin-top: 10px;
+    padding-left: 100px;
+    font-size: 14px;
+    color: #969696;
+}
+.collection .aside .title {
+    float: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #969696;
+}
+.collection .aside .description {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 0 16px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    clear: both;
+    word-break: break-word!important;
+    word-break: break-all;
+}
+.collection .aside .share {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 30px;
+}
+.collection .aside .share span {
+    font-size: 14px;
+    vertical-align: middle;
+}
+.collection .aside .share .option {
+    margin-left: 10px;
+    color: #333;
+}
+.collection .aside .share i {
+    font-size: 22px;
+    vertical-align: middle;
+}
+.collection .aside .list {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    list-style: none;
+    border-bottom: 1px solid #f0f0f0;
+    clear: both;
+}
+.collection .aside .list li {
+    margin-bottom: 10px;
+}
+.collection .aside .list li a {
+    display: inline-block;
+}
+.collection .aside .avatar, .collection .aside .avatar-collection {
+    margin-right: 5px;
+    width: 32px;
+    height: 32px;
+}
+.collection .aside a, .collection .aside a:hover {
+    color: #3194d0;
+}
+.collection .aside .name {
+    position: relative;
+    max-width: 236px;
+    vertical-align: middle;
+    top: 1px;
+    font-size: 14px;
+    color: #333;
+}
+.collection .aside .tag {
+    padding: 1px 3px;
+    margin-left: 2px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #969696;
+    border: 1px solid #969696;
+}
+.collection .aside .list {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    list-style: none;
+    border-bottom: 1px solid #f0f0f0;
+    clear: both;
+}
+.collection .aside .list.collection-follower li {
+    display: inline-block;
+}
+.collection .aside .list.collection-follower li:first-child {
+    margin-left: -3px;
+}
+.collection .aside .list li {
+    margin-bottom: 10px;
+}
+.collection .aside .list.collection-follower li a {
+    margin-right: -10px;
+}
+.collection .aside .list.collection-follower li img {
+    border: 3px solid #fff;
+    background-color: #fff;
+}
+
 
 
 
