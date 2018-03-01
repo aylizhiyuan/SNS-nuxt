@@ -1015,7 +1015,123 @@ person .aside .list li a i {
 .note-list .follow-detail .creater, .note-list .follow-detail .creater:hover {
     color: #3194d0;
 }
-
+/***************************新建专题*********************/
+.new-collection .row {
+    padding-top: 30px;
+}
+.new-collection .main {
+    margin-bottom: 60px;
+}
+.new-collection .main h3 {
+    margin: 10px 0 20px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #333;
+}
+.new-collection .main table {
+    width: 100%;
+}
+.new-collection .main .setting-head {
+    width: 150px;
+}
+.new-collection .main td {
+    padding: 16px 0;
+    font-size: 15px;
+}
+.new-collection .main .avatar-collection {
+    cursor: default;
+    width: 100px;
+    height: 100px;
+}
+.avatar-collection img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10%;
+}
+.new-collection .main .btn-hollow {
+    font-size: 14px;
+    color: #42c02e;
+    padding: 4px 12px;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 40px;
+    background: none;
+    border: 1px solid rgba(59,194,29,.7);
+    color: #42c02e!important;
+}
+.new-collection .main .btn-hollow:hover {
+    background-color: rgba(59,194,29,.05);
+}
+.new-collection .main .hide {
+    position: absolute;
+    display: block!important;
+    width: 82px;
+    opacity: 0;
+}
+.new-collection .main input {
+    padding: 10px 15px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+}
+.new-collection .main .setting-title {
+    font-size: 15px;
+    color: #969696;
+}
+.new-collection .main .setting-input {
+    line-height: 33px;
+}
+.new-collection .main .setting-title {
+    font-size: 15px;
+    color: #969696;
+}
+.new-collection .main textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+    display: block;
+    resize: none;
+    outline-style: none;
+}
+.pull-left {
+    float: left!important;
+}
+.new-collection .main .setting-verticle {
+    vertical-align: bottom;
+}
+.new-collection .main span {
+    margin: 0 5px 0 10px;
+    font-size: 15px;
+    color: #333;
+    vertical-align: middle;
+}
+.new-collection .main .create {
+    margin: 20px 0 50px;
+    border-radius: 20px;
+    font-size:15px;
+    background-color: #42c02e;
+    padding: 8px 22px;
+}
+.new-collection .main .create:hover {
+    background-color:rgb(61,185,34);
+}
+@media (max-width: 750px) {
+    .new-collection .main {
+        margin: 0
+    }
+    .new-collection .main td {
+        display: block;
+        width: calc(100vw - 50px);
+        padding: 0 0 10px!important
+    }
+}
 
 
 
