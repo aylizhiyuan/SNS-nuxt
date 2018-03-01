@@ -9,7 +9,7 @@
                             <img src="~assets/img/default-avatar.jpg">
                         </nuxt-link>
                         <a class="btn btn-success follow">
-                            <i class="fa fa-plus"></i>
+                            <i class="fa fa-plus-square-o"></i>
                             <span>关注</span>
                         </a>
                         <div class="title">
@@ -53,7 +53,7 @@
                         <a class="option" href="#">
                             <i class="fa fa-weibo"></i>
                         </a>
-                        <a class="option">
+                        <a class="option" href="#">
                             <i class="fa fa-weixin"></i>
                         </a>
                     </div>

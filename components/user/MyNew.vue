@@ -157,7 +157,7 @@
                                 <img src="~assets/img/default-avatar.jpg">
                             </nuxt-link>
                             <a class="btn btn-success follow">
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-plus-square-o"></i>
                                 <span>关注</span>
                             </a>
                             <nuxt-link to="/u/123" class="title">
@@ -196,7 +196,7 @@
                                 <img src="~assets/img/movie.jpg">
                             </nuxt-link>
                             <a class="btn btn-success follow">
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-plus-square-o"></i>
                                 <span>关注</span>
                             </a>
                             <nuxt-link class="title" to="/collection/123">旅行咋路上</nuxt-link>

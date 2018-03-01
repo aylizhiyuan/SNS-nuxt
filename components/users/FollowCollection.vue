@@ -8,6 +8,7 @@
                 <div class="info">
                     <nuxt-link class="name" to="/collection/123">赏心何止三两枝</nuxt-link>
                     <div class="meta">
+                        <a href="/u/123">简书</a>
                         收录了20篇文章,5人关注
                     </div>
                 </div>
