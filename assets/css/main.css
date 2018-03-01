@@ -1386,7 +1386,146 @@ person .aside .list li a i {
     border: 3px solid #fff;
     background-color: #fff;
 }
-
+/******************************热门推荐*******************************/
+.recommend {
+    position: relative;
+    padding: 30px 0 50px;
+    text-align: center;
+}
+.recommend-banner {
+    width: 100%;
+    min-height: 100px;
+    background-color: hsla(0,0%,71%,.2);
+    border-radius: 6px;
+}
+.recommend .btn-danger {
+    color:#fff!important;
+    width: 38.2%;
+    padding: 10px 0;
+    margin: 40px 0;
+    font-size: 15px;
+    border-radius: 20px;
+    background-color: #a5a5a5;
+    border: none;
+}
+.recommend .btn-danger:hover {
+    background-color: #9b9b9b
+}
+.recommend .collection-wrap, .recommend .wrap {
+    height: 280px;
+    margin-top: 80px;
+    padding: 0 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -o-transition: .2s ease;
+    -ms-transition: .2s ease;
+}
+.recommend .collection-wrap:hover,.recommend .wrap:hover {
+    box-shadow: 0 5px 20px rgba(0,0,0,.1)
+}
+.avatar-collection {
+    width: 48px;
+    height: 48px;
+    display: block;
+    cursor: pointer;
+}
+.recommend .collection-wrap .avatar-collection, .recommend .wrap .avatar-collection {
+    border-radius: 8px;
+}
+.recommend .collection-wrap .avatar, .recommend .wrap .avatar {
+    border-radius: 40px;
+}
+.recommend .collection-wrap .avatar, .recommend .collection-wrap .avatar-collection, .recommend .wrap .avatar, .recommend .wrap .avatar-collection {
+    width: 80px;
+    height: 80px;
+    margin: -40px 0 10px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+.recommend .collection-wrap h4, .recommend .wrap h4 {
+    font-size: 21px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recommend .collection-wrap .collection-description, .recommend .wrap .collection-description {
+    min-height: 55px;
+}
+.recommend .collection-wrap .collection-description, .recommend .collection-wrap .description, .recommend .wrap .collection-description, .recommend .wrap .description {
+    min-height: 50px;
+    font-size: 13px;
+    line-height: 25px;
+}
+.recommend .collection-wrap .btn, .recommend .wrap .btn {
+    width: 100px;
+    padding: 8px 0;
+}
+.recommend .collection-wrap .follow {
+    border-color: #42c02e;
+    padding: 8px 22px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 40px;
+    color: #fff!important;
+    background-color: #42c02e;
+}
+.recommend .collection-wrap .follow:hover {
+    background-color: #3db922;
+    border-color: #3db922!important;
+}
+.recommend .collection-wrap .follow span {
+    margin-left:2px;
+}
+.recommend .collection-wrap .count, .recommend .wrap .count {
+    font-size: 14px;
+}
+.recommend .collection-wrap .meta, .recommend .wrap .meta {
+    float: left;
+    margin-top: -29px;
+    padding-right: 10px;
+    font-size: 12px;
+    color: #969696;
+    background-color: #f8f8f8;
+}
+.recommend .collection-wrap .recent-update, .recommend .wrap .recent-update {
+    min-height: 75px;
+}
+.recommend .collection-wrap .new, .recommend .wrap .new {
+    font-size: 13px;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.recommend .collection-wrap h4 i, .recommend .wrap h4 i {
+    margin-right: -5px;
+    vertical-align: middle;
+}
+/******************************************收藏的文章**********************************/
+@media (max-width: 1080px){
+    .recommend-banner, .tag-banner {
+        min-height: 78px;
+        border-radius: 4px;
+    }
+}
+.bookmarks .row {
+    padding-top: 30px;
+}
+.tag-banner {
+    margin-bottom: 30px;
+    width: 100%;
+    min-height: 100px;
+    background-color: hsla(0,0%,71%,.2);
+    border-radius: 6px;
+}
 
 
 

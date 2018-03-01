@@ -42,7 +42,7 @@
                                 </nuxt-link>
                             </li>
                             <li>
-                                <nuxt-link to="/settings">
+                                <nuxt-link to="/settings/basic">
                                     <i class="fa fa-cog"></i>
                                     设置
                                 </nuxt-link>

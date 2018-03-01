@@ -37,7 +37,7 @@
                             <img src="../assets/img/collection2.jpg">
                             <span>手绘</span>
                         </nuxt-link>
-                        <nuxt-link class="more-hot-collection" to="/collection/123">
+                        <nuxt-link class="more-hot-collection" to="/recommendations">
                             更多热门专题
                             <i class="fa fa-angle-right"></i>
                         </nuxt-link>
@@ -287,7 +287,7 @@
                                 </p>
                             </li>
                         </ul>
-                        <nuxt-link to="/" class="find-more">
+                        <nuxt-link to="/recommendations" class="find-more">
                             查看更多
                             <i class="fa fa-angle-right"></i>
                         </nuxt-link>
