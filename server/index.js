@@ -1,6 +1,5 @@
 import express from 'express'
 import { Nuxt, Builder } from 'nuxt'
-
 import api from './api'
 
 const app = express()
