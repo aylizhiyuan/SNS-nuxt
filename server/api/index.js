@@ -1,10 +1,10 @@
 import { Router } from 'express'
 
-import users from './users'
-
+import web from './web'
+import admin from './admin'
 const router = Router()
 
-// Add USERS Routes
-router.use(users)
-
+// 添加网页和后台路由
+router.use(web)
+router.use('/admin',admin)
 export default router
